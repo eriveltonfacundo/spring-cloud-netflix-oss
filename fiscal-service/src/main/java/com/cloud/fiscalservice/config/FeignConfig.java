@@ -1,4 +1,4 @@
-package com.cloud.productservice.configs;
+package com.cloud.fiscalservice.config;
 
 import feign.Request;
 import org.springframework.beans.factory.annotation.Value;
@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@EnableFeignClients(basePackages = "com.cloud.productservice.integrations")
+@EnableFeignClients
 public class FeignConfig {
 
     @Value("${feign.connectTimeout:60000}")

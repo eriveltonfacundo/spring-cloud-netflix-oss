@@ -19,13 +19,12 @@ public class ProductServiceApplication {
     @Value("${server.port}")
     private String port;
 
-	public static void main(String[] args) {
-		SpringApplication.run(ProductServiceApplication.class, args);
-	}
-	
     @RequestMapping("/greeting")
     public String greeting() {
         return "Hello from Product Service! Port: " + port;
     }
-    
+
+	public static void main(String[] args) {
+		SpringApplication.run(ProductServiceApplication.class, args);
+	}
 }

@@ -2,6 +2,7 @@ package com.cloud.productservice.integrations;
 
 
 import com.cloud.productservice.configs.FeignConfig;
+import com.cloud.productservice.entities.SituacaoFiscal;
 import com.cloud.productservice.fallback.FiscalServiceFallbackFactory;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,5 +12,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public interface SituacaoFiscalService {
 
     @RequestMapping("/fiscal-situations/{id}")
-    boolean exists(@PathVariable("id") Long id);
+    SituacaoFiscal findById(@PathVariable("id") Long id);
 }

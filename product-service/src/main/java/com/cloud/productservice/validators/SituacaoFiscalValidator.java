@@ -1,5 +1,6 @@
 package com.cloud.productservice.validators;
 
+import com.cloud.productservice.entities.SituacaoFiscal;
 import com.cloud.productservice.integrations.SituacaoFiscalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -13,10 +14,12 @@ public class SituacaoFiscalValidator implements ConstraintValidator<VerifyExiste
     private ApplicationContext context;
 
     @Override
-    public void initialize(VerifyExistenceSituacaoFiscal constraint) {}
+    public void initialize(VerifyExistenceSituacaoFiscal constraint) {
+    }
 
     @Override
     public boolean isValid(Long id, ConstraintValidatorContext constraintValidatorContext) {
-        return context.getBean(SituacaoFiscalService.class).exists(id);
+        SituacaoFiscal situacaoFiscal = context.getBean(SituacaoFiscalService.class).findById(id);
+        return id != null && situacaoFiscal != null;
     }
 }

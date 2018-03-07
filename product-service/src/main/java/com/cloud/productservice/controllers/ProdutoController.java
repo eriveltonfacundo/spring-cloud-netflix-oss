@@ -13,6 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/products")
 public class ProdutoController {
@@ -37,7 +39,7 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> create(@RequestBody Produto produto, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<Void> create(@RequestBody @Valid Produto produto, UriComponentsBuilder uriBuilder) {
         if (produtoService.exists(produto.getId()))
             return new ResponseEntity<>(HttpStatus.CONFLICT);
 
@@ -49,7 +51,7 @@ public class ProdutoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> update(@PathVariable("id") Long id, @RequestBody Produto produto) {
+    public ResponseEntity<Void> update(@PathVariable("id") Long id, @RequestBody @Valid Produto produto) {
         if (!produtoService.exists(id))
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 

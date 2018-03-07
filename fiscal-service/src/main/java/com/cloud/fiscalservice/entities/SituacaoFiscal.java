@@ -35,6 +35,11 @@ public class SituacaoFiscal implements Serializable {
     @Column(name = "UPDATED_DATE")
     private Date updatedDate;
 
+    @Setter(AccessLevel.NONE)
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "DELETED_DATE")
+    private Date deletedDate;
+
     @PrePersist
     public void onPrePersist() {
         id = null;
@@ -44,5 +49,10 @@ public class SituacaoFiscal implements Serializable {
     @PreUpdate
     public void onPreUpdate() {
         updatedDate = new Date();
+    }
+
+    @PreRemove
+    public void onPreRemove() {
+        deletedDate = new Date();
     }
 }

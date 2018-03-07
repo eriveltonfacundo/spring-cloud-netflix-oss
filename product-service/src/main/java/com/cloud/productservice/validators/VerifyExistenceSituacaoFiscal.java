@@ -12,10 +12,10 @@ import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-@Target( { METHOD, FIELD, ANNOTATION_TYPE })
-@Retention(RUNTIME)
-@Constraint(validatedBy = SituacaoFiscalValidator.class)
 @Documented
+@Retention(RUNTIME)
+@Target( { METHOD, FIELD, ANNOTATION_TYPE })
+@Constraint(validatedBy = SituacaoFiscalValidator.class)
 public @interface VerifyExistenceSituacaoFiscal {
     String message() default "Not found";
     Class<?>[] groups() default {};

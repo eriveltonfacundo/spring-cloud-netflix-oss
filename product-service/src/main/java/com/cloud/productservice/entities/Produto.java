@@ -32,7 +32,7 @@ public class Produto implements Serializable {
 
     @VerifyExistenceSituacaoFiscal
     @Column(name = "SITUACAO_FISCAL_ID", nullable = false)
-    private Long situacaoFiscal;
+    private Long situacaoFiscalId;
 
     @Setter(AccessLevel.NONE)
     @Temporal(TemporalType.TIMESTAMP)
