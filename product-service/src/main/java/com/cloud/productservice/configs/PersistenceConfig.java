@@ -18,6 +18,7 @@ import org.springframework.validation.beanvalidation.MethodValidationPostProcess
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import javax.validation.Validator;
+import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
@@ -32,6 +33,10 @@ public class PersistenceConfig {
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+
+        Properties properties = new Properties();
+        properties.setProperty("javax.persistence.validation.mode", "NONE");
+
         HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
         adapter.setGenerateDdl(true);
         adapter.setShowSql(false);
@@ -40,6 +45,7 @@ public class PersistenceConfig {
         factory.setDataSource(dataSource());
         factory.setJpaVendorAdapter(adapter);
         factory.setPackagesToScan("com.cloud.productservice.entities");
+        factory.setJpaProperties(properties);
 
         return factory;
     }
